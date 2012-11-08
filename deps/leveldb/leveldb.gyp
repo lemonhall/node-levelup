@@ -15,6 +15,7 @@
     }
   , 'defines': [
         'SNAPPY=1'
+      , 'LEVELDB_PLATFORM_LIBUV=1'
     ]
   , 'include_dirs': [
         'leveldb-<(ldbversion)/'
@@ -83,7 +84,9 @@
         }]
     ]
   , 'sources': [
-        'leveldb-<(ldbversion)/db/builder.cc'
+        'leveldb-1.5.0/port/libuv/port_uv.cc'
+      , 'leveldb-1.5.0/port/libuv/port_uv.h'
+      , 'leveldb-<(ldbversion)/db/builder.cc'
       , 'leveldb-<(ldbversion)/db/builder.h'
       , 'leveldb-<(ldbversion)/db/db_impl.cc'
       , 'leveldb-<(ldbversion)/db/db_impl.h'
