@@ -28,7 +28,9 @@
 #else
   #include <endian.h>
 #endif
+// #include <pthread.h>
 #include <uv.h>
+#include "uv_condvar.h"
 #ifdef SNAPPY
 #include <snappy.h>
 #endif
@@ -89,7 +91,7 @@ class CondVar {
   void Signal();
   void SignalAll();
  private:
-  uv_cond_t cv_;
+  ldb_uv_cond_t cv_;
   Mutex* mu_;
 };
 

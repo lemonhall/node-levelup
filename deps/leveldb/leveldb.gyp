@@ -19,6 +19,7 @@
     ]
   , 'include_dirs': [
         'leveldb-<(ldbversion)/'
+      , 'libuv_port/'
       , 'leveldb-<(ldbversion)/include/'
     ]
   , 'conditions': [
@@ -30,7 +31,7 @@
       , ['OS == "linux"', {
             'defines': [
                 'OS_LINUX=1'
-              , 'LEVELDB_PLATFORM_POSIX=1'
+              , 'LDB_UV_POSIX=1'
             ]
           , 'libraries': [
                 '-lpthread'
@@ -44,11 +45,14 @@
                 '-Wno-sign-compare'
               , '-Wno-unused-but-set-variable'
             ]
+          , 'sources': [
+                'libuv_port/uv_condvar_posix.cc'
+            ]
         }]
       , ['OS == "solaris"', {
             'defines': [
                 'OS_SOLARIS=1'
-              , 'LEVELDB_PLATFORM_POSIX=1'
+              , 'LDB_UV_POSIX=1'
             ]
           , 'libraries': [
                 '-lrt'
@@ -63,11 +67,14 @@
                 '-Wno-sign-compare'
               , '-Wno-unused-but-set-variable'
             ]
+          , 'sources': [
+                'libuv_port/uv_condvar_posix.cc'
+            ]
         }]
       , ['OS == "mac"', {
             'defines': [
                 'OS_MACOSX=1'
-              , 'LEVELDB_PLATFORM_POSIX=1'
+              , 'LDB_UV_POSIX=1'
             ]
           , 'libraries': []
           , 'ccflags': [
@@ -81,11 +88,16 @@
                   , '-Wno-unused-function'
                 ]
             }
+          , 'sources': [
+                'libuv_port/uv_condvar_posix.cc'
+            ]
         }]
     ]
   , 'sources': [
-        'leveldb-<(ldbversion)/port/libuv/port_uv.cc'
-      , 'leveldb-<(ldbversion)/port/libuv/port_uv.h'
+        'leveldb-<(ldbversion)/port/port.h'
+      , 'libuv_port/port_uv.h'
+      , 'libuv_port/port_uv.cc'
+      , 'libuv_port/uv_condvar.h'
       , 'leveldb-<(ldbversion)/db/builder.cc'
       , 'leveldb-<(ldbversion)/db/builder.h'
       , 'leveldb-<(ldbversion)/db/db_impl.cc'
@@ -128,10 +140,6 @@
       , 'leveldb-<(ldbversion)/include/leveldb/table.h'
       , 'leveldb-<(ldbversion)/include/leveldb/table_builder.h'
       , 'leveldb-<(ldbversion)/include/leveldb/write_batch.h'
-      , 'leveldb-<(ldbversion)/port/port.h'
-      , 'leveldb-<(ldbversion)/port/port_example.h'
-      , 'leveldb-<(ldbversion)/port/port_posix.cc'
-      , 'leveldb-<(ldbversion)/port/port_posix.h'
       , 'leveldb-<(ldbversion)/table/block.cc'
       , 'leveldb-<(ldbversion)/table/block.h'
       , 'leveldb-<(ldbversion)/table/block_builder.cc'

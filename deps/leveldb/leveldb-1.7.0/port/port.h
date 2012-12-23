@@ -7,15 +7,6 @@
 
 #include <string.h>
 
-// Include the appropriate platform specific file below.  If you are
-// porting to a new platform, see "port_example.h" for documentation
-// of what the new port_<platform>.h file must provide.
-#if defined(LEVELDB_PLATFORM_POSIX)
-#  include "port/port_posix.h"
-#elif defined(LEVELDB_PLATFORM_LIBUV)
-#  include "port/libuv/port_uv.h"
-#elif defined(LEVELDB_PLATFORM_CHROMIUM)
-#  include "port/port_chromium.h"
-#endif
+#include "../libuv_port/port_uv.h"
 
 #endif  // STORAGE_LEVELDB_PORT_PORT_H_
