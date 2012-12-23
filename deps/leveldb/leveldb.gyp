@@ -84,8 +84,8 @@
         }]
     ]
   , 'sources': [
-        'leveldb-1.5.0/port/libuv/port_uv.cc'
-      , 'leveldb-1.5.0/port/libuv/port_uv.h'
+        'leveldb-<(ldbversion)/port/libuv/port_uv.cc'
+      , 'leveldb-<(ldbversion)/port/libuv/port_uv.h'
       , 'leveldb-<(ldbversion)/db/builder.cc'
       , 'leveldb-<(ldbversion)/db/builder.h'
       , 'leveldb-<(ldbversion)/db/db_impl.cc'
