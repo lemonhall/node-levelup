@@ -28,6 +28,7 @@
       , "errno"           : "~0.0.3"
       , "concat-stream"   : "~0.1.1"
       , "simple-bufferstream" : "~0.0.2"
+      , "externr"         : "~0.0.1"
     }
   , "devDependencies" : {
         "buster"          : "*"
